@@ -181,9 +181,13 @@
                     document.getElementById('responseMessage').textContent = 'Vielen Dank für Ihre Anfrage!';
                     this.reset();
                 } else {
-                    document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anfrage.';
+                    return response.text().then(text => {
+                        console.error('Fehler beim Senden der Anfrage:', text);
+                        document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anfrage.';
+                    });
                 }
-            }).catch(() => {
+            }).catch(error => {
+                console.error('Netzwerkfehler:', error);
                 document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anfrage.';
             });
         });
