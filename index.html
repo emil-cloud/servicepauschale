@@ -122,11 +122,11 @@
         <h1>CO2-Zertifikate VERKAUFEN</h1>
         <p>Wir kaufen die CO2-Zertifikate von Ihren E-Autos und Ladestationen. Gerne schicken wir Ihnen unser Angebot!</p>
         <form id="registrationForm">
-            <label for="phone">Telefonnummer:</label>
-            <input type="text" id="phone" name="phone" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-            <label for="email">E-Mail:</label>
-            <input type="text" id="email" name="email" required>
+            <label for="contact">E-Mail oder Telefonnummer:</label>
+            <input type="text" id="contact" name="contact" required>
 
             <div class="row">
                 <label for="numEvehicles">Anzahl der E-Fahrzeuge:</label>
@@ -140,7 +140,7 @@
                 <span id="prizeChargingStations">Prämie: 0€</span>
             </div>
 
-            <button type="submit">Anmelden</button>
+            <button type="submit">Angebot anfragen</button>
         </form>
         <a href="https://www.umweltbonus.at/" target="_blank">Weitere Informationen zum Umweltbonus</a>
         <p id="responseMessage"></p>
@@ -178,13 +178,13 @@
                 body: formData
             }).then(response => {
                 if (response.ok) {
-                    document.getElementById('responseMessage').textContent = 'Vielen Dank für Ihre Anmeldung!';
+                    document.getElementById('responseMessage').textContent = 'Vielen Dank für Ihre Anfrage!';
                     this.reset();
                 } else {
-                    document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anmeldung.';
+                    document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anfrage.';
                 }
             }).catch(() => {
-                document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anmeldung.';
+                document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anfrage.';
             });
         });
     </script>
