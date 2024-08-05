@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Pauschale Anmeldung</title>
+    <title>CO2-Zertifikate VERKAUFEN</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +65,7 @@
             align-items: center;
         }
 
-        .row input[type="text"] {
+        .row input[type="number"] {
             width: 100px;
             text-align: right;
         }
@@ -97,6 +97,18 @@
             color: #333;
         }
 
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -107,8 +119,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Service Pauschale Anmeldung</h1>
-        <p>Bitte geben Sie Ihre Kontaktdaten und zusätzliche Informationen ein, um sich für die Servicepauschale anzumelden.</p>
+        <h1>CO2-Zertifikate VERKAUFEN</h1>
+        <p>Wir kaufen die CO2-Zertifikate von Ihren E-Autos und Ladestationen. Gerne schicken wir Ihnen unser Angebot!</p>
         <form id="registrationForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -130,6 +142,7 @@
 
             <button type="submit">Anmelden</button>
         </form>
+        <a href="https://www.umweltbonus.at/" target="_blank">Weitere Informationen zum Umweltbonus</a>
         <p id="responseMessage"></p>
     </div>
 
@@ -145,7 +158,7 @@
 
             // Calculate prizes
             const prizeEvehicles = numEvehicles * 90;
-            const prizeChargingStations = numChargingStations * 0.07;
+            const prizeChargingStations = numChargingStations * 0.06;
 
             // Update display
             prizeEvehiclesSpan.textContent = `Prämie: ${prizeEvehicles.toFixed(2)}€`;
