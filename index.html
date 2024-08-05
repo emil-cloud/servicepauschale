@@ -91,7 +91,7 @@
     <div class="container">
         <h1>Service Pauschale Anmeldung</h1>
         <p>Bitte geben Sie Ihre Kontaktdaten ein, um sich für die Servicepauschale anzumelden.</p>
-        <form id="registrationForm">
+        <form action="https://formspree.io/f/xqazqopv" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -102,33 +102,5 @@
         </form>
         <p id="responseMessage"></p>
     </div>
-
-    <!-- Include Formspree JavaScript library -->
-    <script src="https://formspree.io/js/formbutton-v1.min.js"></script>
-    <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            fetch('https://formspree.io/f/xqazqopv', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: document.getElementById('name').value,
-                    address: document.getElementById('address').value
-                })
-            }).then(response => {
-                if (response.ok) {
-                    document.getElementById('responseMessage').textContent = 'Vielen Dank für Ihre Anmeldung!';
-                    document.getElementById('registrationForm').reset();
-                } else {
-                    document.getElementById('responseMessage').textContent = 'Es gab ein Problem bei der Anmeldung.';
-                }
-            });
-        });
-    </script>
 </body>
-</html>
-
 </html>
