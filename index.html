@@ -86,22 +86,6 @@
             flex: 1;
         }
 
-        .partner-row {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .partner-row input {
-            text-align: center;
-        }
-
-        .partner-id {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #007BFF;
-        }
-
         button {
             padding: 10px;
             background-color: #007BFF;
@@ -162,12 +146,6 @@
                 </div>
             </div>
 
-            <div class="partner-row">
-                <label for="partnerName">Partnername:</label>
-                <input type="text" id="partnerName" name="partnerName" placeholder="Partnername">
-                <div id="partnerId" class="partner-id">Partner-ID: -</div>
-            </div>
-
             <div class="row">
                 <label for="numEvehicles">Anzahl der E-Fahrzeuge:</label>
                 <input type="number" id="numEvehicles" name="numEvehicles">
@@ -192,8 +170,6 @@
         const prizeChargingStationsSpan = document.getElementById('prizeChargingStations');
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phone');
-        const partnerNameInput = document.getElementById('partnerName');
-        const partnerIdSpan = document.getElementById('partnerId');
 
         function updatePrizes() {
             const numEvehicles = parseFloat(numEvehiclesInput.value) || 0;
@@ -208,18 +184,8 @@
             prizeChargingStationsSpan.textContent = `Prämie: ${prizeChargingStations.toFixed(2)}€`;
         }
 
-        function generatePartnerId(name) {
-            return name ? `ID-${Math.floor(Math.random() * 10000)}` : '-';
-        }
-
-        function updatePartnerId() {
-            const partnerName = partnerNameInput.value.trim();
-            partnerIdSpan.textContent = `Partner-ID: ${generatePartnerId(partnerName)}`;
-        }
-
         numEvehiclesInput.addEventListener('input', updatePrizes);
         numChargingStationsInput.addEventListener('input', updatePrizes);
-        partnerNameInput.addEventListener('input', updatePartnerId);
 
         function validateForm() {
             const email = emailInput.value.trim();
