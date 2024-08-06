@@ -76,6 +76,16 @@
             padding: 10px;
         }
 
+        .contact-row {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .contact-row input {
+            flex: 1;
+        }
+
         button {
             padding: 10px;
             background-color: #007BFF;
@@ -125,8 +135,16 @@
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="contact">E-Mail oder Telefonnummer:</label>
-            <input type="text" id="contact" name="contact" required>
+            <div class="contact-row">
+                <div>
+                    <label for="email">E-Mail:</label>
+                    <input type="text" id="email" name="email" placeholder="E-Mail">
+                </div>
+                <div>
+                    <label for="phone">Telefonnummer:</label>
+                    <input type="text" id="phone" name="phone" placeholder="Telefonnummer">
+                </div>
+            </div>
 
             <div class="row">
                 <label for="numEvehicles">Anzahl der E-Fahrzeuge:</label>
@@ -150,6 +168,8 @@
         const numChargingStationsInput = document.getElementById('numChargingStations');
         const prizeEvehiclesSpan = document.getElementById('prizeEvehicles');
         const prizeChargingStationsSpan = document.getElementById('prizeChargingStations');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
 
         function updatePrizes() {
             const numEvehicles = parseFloat(numEvehiclesInput.value) || 0;
@@ -168,16 +188,15 @@
         numChargingStationsInput.addEventListener('input', updatePrizes);
 
         function validateForm() {
-            const numEvehicles = numEvehiclesInput.value.trim();
-            const numChargingStations = numChargingStationsInput.value.trim();
-
-            return numEvehicles || numChargingStations;
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            return email || phone;
         }
 
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             if (!validateForm()) {
                 event.preventDefault();
-                document.getElementById('responseMessage').textContent = 'Bitte füllen Sie mindestens eines der Felder aus.';
+                document.getElementById('responseMessage').textContent = 'Bitte füllen Sie entweder die E-Mail oder die Telefonnummer aus.';
                 return;
             }
 
