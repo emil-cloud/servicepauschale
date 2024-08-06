@@ -130,13 +130,13 @@
 
             <div class="row">
                 <label for="numEvehicles">Anzahl der E-Fahrzeuge:</label>
-                <input type="number" id="numEvehicles" name="numEvehicles" required>
+                <input type="number" id="numEvehicles" name="numEvehicles">
                 <span id="prizeEvehicles">Prämie: 0€</span>
             </div>
 
             <div class="row">
                 <label for="numChargingStations">kWh von Ladestation:</label>
-                <input type="number" id="numChargingStations" name="numChargingStations" required>
+                <input type="number" id="numChargingStations" name="numChargingStations">
                 <span id="prizeChargingStations">Prämie: 0€</span>
             </div>
 
@@ -167,7 +167,20 @@
         numEvehiclesInput.addEventListener('input', updatePrizes);
         numChargingStationsInput.addEventListener('input', updatePrizes);
 
+        function validateForm() {
+            const numEvehicles = numEvehiclesInput.value.trim();
+            const numChargingStations = numChargingStationsInput.value.trim();
+
+            return numEvehicles || numChargingStations;
+        }
+
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            if (!validateForm()) {
+                event.preventDefault();
+                document.getElementById('responseMessage').textContent = 'Bitte füllen Sie mindestens eines der Felder aus.';
+                return;
+            }
+
             event.preventDefault();
 
             const formData = new FormData(this);
